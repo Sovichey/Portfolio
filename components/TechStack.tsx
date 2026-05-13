@@ -137,7 +137,7 @@ export function TechStack() {
   return (
     <section
       id="tech-stack"
-      className="py-24 px-4 md:px-8 bg-background scroll-mt-16"
+      className="py-12 px-4 md:px-8 bg-background scroll-mt-16"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
