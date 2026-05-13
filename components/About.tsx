@@ -130,8 +130,8 @@ export function About() {
               {/* Highlight Boxes */}
               <div className="grid grid-cols-3 gap-3 md:gap-4 flex-1">
                 <motion.div
-                  whileHover={{ borderColor: "#3b82f6" }}
-                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 hover:border-primary cursor-pointer flex flex-col items-center justify-center"
+                  whileHover={{ borderColor: "#00daf3" }}
+                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center"
                 >
                   <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
                     4+
@@ -142,8 +142,8 @@ export function About() {
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ borderColor: "#3b82f6" }}
-                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 hover:border-primary cursor-pointer flex flex-col items-center justify-center"
+                  whileHover={{ borderColor: "#00daf3" }}
+                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center"
                 >
                   <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
                     10+
@@ -154,8 +154,8 @@ export function About() {
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ borderColor: "#3b82f6" }}
-                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 hover:border-primary cursor-pointer flex flex-col items-center justify-center"
+                  whileHover={{ borderColor: "#00daf3" }}
+                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center"
                 >
                   <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
                     10+
