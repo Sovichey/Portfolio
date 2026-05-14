@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Calendar, CheckCircle } from "lucide-react";
 
 export function About() {
   const education = [
@@ -48,13 +49,14 @@ export function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
+              className="relative group"
             >
-              <div className="w-full aspect-square bg-gray-900 border border-gray-700 overflow-hidden rounded">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-2xl blur opacity-40 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-2xl shadow-2xl shadow-primary/20 group-hover:border-primary transition-all">
                 <img
                   src="/my-pic.png"
                   alt="Profile"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </motion.div>
@@ -67,100 +69,93 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex flex-col gap-2"
             >
-              <div className="bg-gray-900 border border-gray-700 p-6 rounded space-y-4 flex-shrink-0">
-                <p className="text-gray-300 leading-relaxed">
+              <div className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur-sm p-6 rounded-2xl space-y-4 flex-shrink-0 hover:border-primary/60 transition-all duration-300 group shadow-lg shadow-primary/10">
+                <p className="text-gray-200 leading-relaxed text-lg">
                   I am a{" "}
-                  <span className="text-primary font-semibold">
+                  <span className="text-primary font-bold">
                     senior Information and Communication Technology (ICT)
                   </span>{" "}
                   student at the{" "}
-                  <span className="text-primary font-semibold">
+                  <span className="text-cyan-400 font-bold">
                     American University of Phnom Penh (AUPP)
                   </span>
                   , where I have spent the last four years honing my technical
                   expertise and problem-solving skills. My academic journey has
                   fueled a deep-seated passion for{" "}
-                  <span className="text-primary font-semibold">
+                  <span className="text-primary font-bold">
                     Web Development
                   </span>{" "}
                   and{" "}
-                  <span className="text-primary font-semibold">
+                  <span className="text-cyan-400 font-bold">
                     Frontend Design
-                  </span>
-                  , focusing on the intersection of{" "}
-                  <span className="text-primary font-semibold">clean code</span>{" "}
-                  and{" "}
-                  <span className="text-primary font-semibold">
-                    intuitive user experiences
                   </span>
                   .
                 </p>
-                <p className="text-gray-300 leading-relaxed">
-                  As I approach the completion of my degree, my drive to evolve
-                  alongside the fast-paced tech industry remains stronger than
-                  ever. I am committed to{" "}
-                  <span className="text-primary font-semibold">
+                <p className="text-gray-200 leading-relaxed text-lg">
+                  As I approach graduation, my drive to evolve with the
+                  fast-paced tech industry remains stronger than ever. I am
+                  committed to{" "}
+                  <span className="text-primary font-bold">
                     continuous learning
                   </span>
                   , constantly exploring{" "}
-                  <span className="text-primary font-semibold">
+                  <span className="text-cyan-400 font-bold">
                     modern frameworks
                   </span>{" "}
-                  and{" "}
-                  <span className="text-primary font-semibold">
-                    design trends
-                  </span>{" "}
-                  to build{" "}
-                  <span className="text-primary font-semibold">
-                    digital solutions
-                  </span>{" "}
-                  that are both functional and visually compelling. I am now
-                  eager to transition my academic foundation into{" "}
-                  <span className="text-primary font-semibold">
-                    professional environments
-                  </span>{" "}
-                  where I can contribute to{" "}
-                  <span className="text-primary font-semibold">
-                    impactful projects
-                  </span>{" "}
-                  while further refining my craft.
+                  and design trends to build{" "}
+                  <span className="text-primary font-bold">
+                    impactful digital solutions
+                  </span>
+                  .
                 </p>
               </div>
 
               {/* Highlight Boxes */}
               <div className="grid grid-cols-3 gap-3 md:gap-4 flex-1">
                 <motion.div
-                  whileHover={{ borderColor: "#00daf3" }}
-                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center"
+                  whileHover={{
+                    y: -5,
+                    borderColor: "#00daf3",
+                    boxShadow: "0 10px 20px rgba(0, 218, 243, 0.3)",
+                  }}
+                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-xl text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400"
                 >
-                  <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
+                  <p className="text-primary font-mono text-2xl md:text-3xl font-bold mb-1">
                     4+
                   </p>
-                  <p className="text-gray-400 text-xs md:text-sm font-mono">
-                    Years Student
+                  <p className="text-gray-300 text-xs md:text-sm font-mono font-semibold">
+                    Years in Tech
                   </p>
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ borderColor: "#00daf3" }}
-                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center"
+                  whileHover={{
+                    y: -5,
+                    borderColor: "#00daf3",
+                    boxShadow: "0 10px 20px rgba(0, 218, 243, 0.3)",
+                  }}
+                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-xl text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400"
                 >
-                  <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
+                  <p className="text-cyan-400 font-mono text-2xl md:text-3xl font-bold mb-1">
                     10+
                   </p>
-                  <p className="text-gray-400 text-xs md:text-sm font-mono">
+                  <p className="text-gray-300 text-xs md:text-sm font-mono font-semibold">
                     Projects Built
                   </p>
                 </motion.div>
 
                 <motion.div
-                  whileHover={{ borderColor: "#00daf3" }}
-                  className="bg-gray-900 border-2 border-gray-700 p-4 rounded text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center"
+                  whileHover={{
+                    y: -5,
+                    borderColor: "#00daf3",
+                    boxShadow: "0 10px 20px rgba(0, 218, 243, 0.3)",
+                  }}
+                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-xl text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400"
                 >
-                  <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
-                    10+
+                  <p className="text-primary font-mono text-2xl md:text-3xl font-bold mb-1">
+                    15+
                   </p>
-                  <p className="text-gray-400 text-xs md:text-sm font-mono">
+                  <p className="text-gray-300 text-xs md:text-sm font-mono font-semibold">
                     Technologies
                   </p>
                 </motion.div>
@@ -201,20 +196,23 @@ export function About() {
                   </div>
 
                   {/* Content */}
-                  <div className="bg-gray-900/40 border border-gray-700/50 rounded-lg p-4 group-hover:border-primary/50 transition-colors">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4 mb-2">
+                  <div className="bg-gradient-to-r from-gray-900/50 to-gray-900/30 border border-primary/30 backdrop-blur rounded-xl p-5 group-hover:border-primary/70 transition-all duration-300 shadow-lg shadow-primary/5 group-hover:shadow-primary/20">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4 mb-3">
                       <div>
-                        <p className="text-primary text-sm font-mono mb-1">
+                        <p className="text-cyan-400 text-sm font-mono font-bold mb-2 flex items-center gap-2 leading-none">
+                          <Calendar size={16} className="flex-shrink-0" />{" "}
                           {edu.year}
                         </p>
-                        <h4 className="text-xl font-bold text-white">
+                        <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">
                           {edu.degree}
                         </h4>
-                        <p className="text-gray-400 text-sm">{edu.school}</p>
+                        <p className="text-gray-400 text-sm mt-1">
+                          {edu.school}
+                        </p>
                       </div>
                       {edu.gpa && (
-                        <div className="bg-gray-900 border border-primary px-3 py-2 rounded w-fit whitespace-nowrap group-hover:bg-primary/10 transition-colors">
-                          <p className="text-primary font-mono text-xs md:text-sm">
+                        <div className="bg-gradient-to-r from-primary/20 to-cyan-400/20 border border-primary/50 px-4 py-2 rounded-lg w-fit whitespace-nowrap group-hover:border-primary group-hover:bg-primary/30 transition-all">
+                          <p className="text-cyan-400 font-mono text-sm font-bold">
                             {edu.gpa.includes("/")
                               ? `GPA: ${edu.gpa}`
                               : edu.gpa}
@@ -223,12 +221,13 @@ export function About() {
                       )}
                     </div>
                     {edu.skills.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-3">
+                      <div className="flex flex-wrap gap-2 mt-4">
                         {edu.skills.map((skill, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 bg-primary/5 border border-primary/30 text-gray-300 text-xs rounded font-mono group-hover:border-primary/60 transition-colors"
+                            className="px-3 py-1 bg-primary/10 border border-primary/50 text-cyan-300 text-xs rounded-lg font-mono group-hover:border-primary/80 group-hover:bg-primary/20 transition-all inline-flex items-center gap-1 leading-none"
                           >
+                            <CheckCircle size={12} className="flex-shrink-0" />{" "}
                             {skill}
                           </span>
                         ))}

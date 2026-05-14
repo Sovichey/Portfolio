@@ -9,20 +9,21 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="w-full py-8 px-4 md:px-8 border-t border-gray-700 bg-background">
+    <footer className="w-full py-8 px-4 md:px-8 border-t border-primary/20 bg-gradient-to-b from-background/50 to-background">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <p className="text-gray-400 text-xs font-mono uppercase tracking-widest">
-          © 2026 SOVICHEY. All rights reserved.
+        <p className="text-gray-400 text-xs font-mono uppercase tracking-widest font-semibold">
+          © 2026 <span className="text-primary font-bold">SOVICHEY</span>. All
+          rights reserved.
         </p>
 
-        <div className="flex gap-6">
+        <div className="flex gap-8">
           {socialLinks.map((link) => (
             <a
               key={link.name}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary text-xs font-mono uppercase transition-colors"
+              className="text-gray-400 hover:text-primary text-xs font-mono uppercase transition-all duration-300 font-semibold hover:scale-110"
             >
               {link.name}
             </a>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, Award } from "lucide-react";
+import { Briefcase, Award, ArrowUpRight, Calendar } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -126,10 +126,13 @@ export function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  className="border border-gray-700 bg-gray-900 rounded p-6 hover:border-primary transition-colors cursor-pointer group flex flex-col h-full"
+                  whileHover={{
+                    y: -12,
+                    boxShadow: "0 20px 40px rgba(0, 218, 243, 0.25)",
+                  }}
+                  className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-xl p-6 hover:border-primary/80 transition-all duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 hover:shadow-primary/25"
                 >
-                  <div className="mb-4 rounded overflow-hidden bg-gray-800 aspect-video">
+                  <div className="mb-4 rounded-lg overflow-hidden bg-gray-800 aspect-video group-hover:scale-105 transition-transform duration-300">
                     <Image
                       src={cert.image}
                       alt={cert.title}
@@ -140,25 +143,30 @@ export function Projects() {
                     />
                   </div>
                   <div className="flex justify-between items-start mb-4">
-                    <span className="text-xs font-mono text-primary uppercase">
-                      Date: {cert.id}
+                    <span className="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1 leading-none">
+                      <Calendar size={12} className="flex-shrink-0" /> {cert.id}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {cert.title}
                   </h3>
+                  <p className="text-gray-300 text-sm font-semibold mb-1">
+                    {cert.issuer}
+                  </p>
                   <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-1">
                     {cert.description}
                   </p>
-                  <button
+                  <motion.button
                     onClick={() => setSelectedImage(cert.image)}
-                    className="text-primary font-mono text-sm uppercase hover:text-primary-fixed transition-colors flex items-center gap-2 group/btn"
+                    whileHover={{ gap: "12px" }}
+                    className="text-cyan-400 font-mono text-sm uppercase hover:text-primary transition-colors flex items-center gap-2 group/btn font-bold leading-none"
                   >
                     View Certificate
-                    <span className="group-hover/btn:translate-x-1 transition-transform">
-                      →
-                    </span>
-                  </button>
+                    <ArrowUpRight
+                      size={14}
+                      className="flex-shrink-0 group-hover/btn:translate-x-1 transition-transform"
+                    />
+                  </motion.button>
                 </motion.div>
               ))}
             </div>
@@ -174,10 +182,13 @@ export function Projects() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  className="border border-gray-700 bg-gray-900 rounded p-6 hover:border-primary transition-colors cursor-pointer group flex flex-col h-full"
+                  whileHover={{
+                    y: -12,
+                    boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
+                  }}
+                  className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-xl p-6 hover:border-primary/80 transition-all duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 hover:shadow-primary/25"
                 >
-                  <div className="mb-4 rounded overflow-hidden bg-white h-48 flex items-center justify-center">
+                  <div className="mb-4 rounded-lg overflow-hidden bg-white h-48 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -187,7 +198,7 @@ export function Projects() {
                       priority
                     />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
@@ -197,7 +208,7 @@ export function Projects() {
                     {project.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-2 py-1 bg-gray-800 border border-gray-600 text-gray-300 text-xs rounded2xl font-mono"
+                        className="px-3 py-1 bg-primary/10 border border-primary/40 text-cyan-300 text-xs rounded-lg font-mono group-hover:border-primary/70 group-hover:bg-primary/20 transition-all"
                       >
                         {tech}
                       </span>
@@ -205,24 +216,28 @@ export function Projects() {
                   </div>
                   {(project.startDate || project.endDate) && (
                     <div className="mb-6">
-                      <p className="text-xs font-mono text-gray-400 uppercase mb-2">
+                      <p className="text-xs font-mono text-cyan-400 uppercase mb-2 font-bold flex items-center gap-1 leading-none">
+                        <Calendar size={14} className="flex-shrink-0" />{" "}
                         Timeline
                       </p>
-                      <p className="text-gray-300 text-sm">
+                      <p className="text-gray-300 text-sm font-semibold">
                         {project.startDate}
                         {project.endDate ? ` - ${project.endDate}` : ""}
                       </p>
                     </div>
                   )}
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="text-primary font-mono text-sm uppercase hover:text-primary-fixed transition-colors flex items-center gap-2 group/btn"
-                  >
-                    View Project
-                    <span className="group-hover/btn:translate-x-1 transition-transform">
-                      →
-                    </span>
-                  </Link>
+                  <motion.div whileHover={{ gap: "12px" }}>
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="text-cyan-400 font-mono text-sm uppercase hover:text-primary transition-colors flex items-center gap-2 group/btn font-bold leading-none"
+                    >
+                      View Project
+                      <ArrowUpRight
+                        size={14}
+                        className="flex-shrink-0 group-hover/btn:translate-x-1 transition-transform"
+                      />
+                    </Link>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import { emailConfig, isEmailConfigured } from "@/lib/emailConfig";
+import { Mail, ArrowUpRight } from "lucide-react";
 
 const socialLinks = [
   {
@@ -223,18 +224,18 @@ export function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative bg-gradient-to-br from-primary/10 via-gray-900 to-gray-800 border border-primary/30 rounded-xl p-8 overflow-hidden group"
+              className="relative bg-gradient-to-br from-primary/10 via-gray-900/60 to-gray-900/40 border border-primary/40 rounded-xl p-8 overflow-hidden group shadow-lg shadow-primary/10 hover:border-primary/70 transition-all duration-300 backdrop-blur"
             >
               {/* Animated background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
-                <h3 className="text-2xl font-mono font-bold text-white mb-2 flex items-center gap-2">
-                  <span className="inline-block w-1 h-8 bg-primary rounded-full"></span>
-                  Connect With Me
+                <h3 className="text-2xl font-mono font-bold text-white mb-2 flex items-center gap-3">
+                  <span className="inline-block w-1 h-8 bg-gradient-to-b from-primary to-cyan-400 rounded-full"></span>
+                  Let's Connect
                 </h3>
-                <p className="text-gray-400 text-sm mb-8 font-mono">
-                  Follow my journey across platforms
+                <p className="text-gray-300 text-sm mb-8 font-mono">
+                  Reach out through any platform below
                 </p>
 
                 <div className="space-y-3">
@@ -244,27 +245,33 @@ export function Contact() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ x: 8 }}
+                      whileHover={{ x: 12, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center gap-4 p-4 bg-gray-800/50 hover:bg-primary/10 border border-gray-700 hover:border-primary/50 rounded-lg transition-all duration-300 group/link backdrop-blur-sm"
+                      className="flex items-center gap-4 p-4 bg-gray-800/30 hover:bg-primary/20 border border-gray-700/50 hover:border-primary/70 rounded-lg transition-all duration-300 group/link backdrop-blur-sm shadow-md hover:shadow-lg hover:shadow-primary/20"
                     >
-                      <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-blue-600/20 text-primary group-hover/link:from-primary/40 group-hover/link:to-blue-600/40 group-hover/link:scale-110 transition-all duration-300 flex-shrink-0">
+                      <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/30 to-cyan-400/20 text-primary group-hover/link:from-primary/50 group-hover/link:to-cyan-400/40 group-hover/link:scale-110 transition-all duration-300 flex-shrink-0">
                         {link.icon}
                       </div>
                       <div className="flex-1">
                         <p className="text-white font-semibold font-mono group-hover/link:text-primary transition-colors">
                           {link.name}
                         </p>
-                        <p className="text-xs text-gray-400 truncate">
+                        <p className="text-xs text-gray-400 truncate font-semibold">
                           {link.username}
                         </p>
                       </div>
                       <svg
-                        className="w-5 h-5 text-gray-500 group-hover/link:text-primary transition-all flex-shrink-0"
+                        className="w-5 h-5 text-gray-500 group-hover/link:text-primary transition-all flex-shrink-0 group-hover/link:translate-x-1"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+                        <path
+                          d="M5 12h14M12 5l7 7-7 7"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          fill="none"
+                          strokeLinecap="round"
+                        />
                       </svg>
                     </motion.a>
                   ))}
@@ -272,7 +279,7 @@ export function Contact() {
               </div>
 
               {/* Glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-blue-600/20 rounded-xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-cyan-400/30 rounded-xl blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
             </motion.div>
 
             {/* Contact Form */}
@@ -282,21 +289,21 @@ export function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
               onSubmit={handleSubmit}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-lg p-8"
+              className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur rounded-xl p-8 shadow-lg shadow-primary/10 hover:border-primary/60 transition-all duration-300"
             >
-              <h3 className="text-2xl font-mono font-bold text-primary mb-8 flex items-center gap-2">
+              <h3 className="text-2xl font-mono font-bold text-primary mb-8 flex items-center gap-3 leading-none">
                 <svg
-                  className="w-8 h-8 fill-current text-primary"
+                  className="w-8 h-8 fill-current text-cyan-400 flex-shrink-0"
                   viewBox="0 0 24 24"
                 >
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
-                Send a Message
+                <span>Send Me a Message</span>
               </h3>
 
               <div className="space-y-5">
                 <div>
-                  <label className="block text-sm font-mono text-gray-400 mb-2">
+                  <label className="block text-sm font-mono text-cyan-300 mb-2 font-semibold">
                     Name
                   </label>
                   <input
@@ -306,58 +313,69 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors focus:shadow-lg focus:shadow-primary/20"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-lg text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-all focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-mono text-gray-400 mb-2">
-                    Email <span className="text-red-500">*</span>
+                  <label className="block text-sm font-mono text-cyan-300 mb-2 font-semibold">
+                    Email <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="email"
                     name="email"
-                    placeholder="Your Email"
+                    placeholder="your@email.com"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors focus:shadow-lg focus:shadow-primary/20"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-lg text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-all focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-mono text-gray-400 mb-2">
+                  <label className="block text-sm font-mono text-cyan-300 mb-2 font-semibold">
                     Message
                   </label>
                   <textarea
                     name="message"
-                    placeholder="Your Message"
+                    placeholder="Tell me about your project or inquiry..."
                     value={formData.message}
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded text-white placeholder-gray-500 focus:border-primary focus:outline-none transition-colors resize-none focus:shadow-lg focus:shadow-primary/20"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-lg text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-all resize-none focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
                   />
                 </div>
 
                 <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-primary to-blue-600 text-background font-semibold rounded font-mono font-bold hover:shadow-lg hover:shadow-primary/50 transition-all disabled:opacity-50"
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full px-6 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-lg font-mono transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/40 hover:shadow-primary/60 flex items-center justify-center gap-2 leading-none"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message →"}
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <Mail size={18} className="flex-shrink-0" /> Send Message
+                    </>
+                  )}
                 </motion.button>
 
                 {status && (
                   <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className={`text-sm text-center font-mono ${
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`text-sm text-center font-mono font-semibold rounded-lg p-3 ${
                       status.includes("success")
-                        ? "text-green-400"
-                        : "text-red-400"
+                        ? "text-green-300 bg-green-400/10 border border-green-400/30"
+                        : status.includes("Sending")
+                          ? "text-cyan-300 bg-cyan-400/10 border border-cyan-400/30"
+                          : "text-red-300 bg-red-400/10 border border-red-400/30"
                     }`}
                   >
                     {status}

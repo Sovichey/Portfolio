@@ -44,24 +44,31 @@ export function Hero() {
             </p>
 
             <motion.div
-              className="flex gap-4 justify-center md:justify-start flex-wrap pt-4"
+              className="flex gap-4 justify-center md:justify-start flex-wrap pt-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
               <motion.a
                 href="#projects"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-primary text-background font-semibold rounded hover:bg-opacity-90 transition"
+                className="px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-lg shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/70 transition-all duration-300 cursor-pointer relative overflow-hidden group"
               >
-                View Work
+                <span className="relative z-10">View My Work</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.a>
               <motion.a
                 href="#contact"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+                }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border border-primary text-primary font-semibold rounded hover:bg-primary hover:text-background transition"
+                className="px-8 py-4 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary/10 hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 backdrop-blur-sm"
               >
                 Get in Touch
               </motion.a>

@@ -199,7 +199,7 @@ export function TechStack() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
           >
             {technologies[activeTab].map((tech, idx) => (
               <motion.div
@@ -208,21 +208,24 @@ export function TechStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="border border-gray-700 bg-gray-900 p-6 rounded hover:border-primary transition-colors flex justify-between items-start"
+                whileHover={{
+                  y: -8,
+                  boxShadow: "0 20px 30px rgba(59, 130, 246, 0.3)",
+                }}
+                className="group border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur p-6 rounded-xl hover:border-primary/80 transition-all duration-300 flex justify-between items-start shadow-lg shadow-primary/5 hover:shadow-primary/30"
               >
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-white mb-1">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {tech.name}
                   </h3>
-                  <p className="text-primary text-sm font-mono mb-3">
+                  <p className="text-cyan-400 text-sm font-mono mb-4 font-semibold">
                     {tech.category}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {tech.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-gray-800 border border-gray-600 text-gray-300 text-xs rounded font-mono"
+                        className="px-3 py-1 bg-primary/10 border border-primary/40 text-cyan-300 text-xs rounded-lg font-mono group-hover:border-primary/70 group-hover:bg-primary/20 transition-all"
                       >
                         {tag}
                       </span>
@@ -233,7 +236,7 @@ export function TechStack() {
                   <img
                     src={tech.image}
                     alt={tech.name}
-                    className="w-16 h-16 ml-4 object-contain"
+                    className="w-16 h-16 ml-4 object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 )}
               </motion.div>
@@ -246,21 +249,27 @@ export function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-16 bg-gray-900 border border-gray-700 p-8 rounded font-mono text-sm"
+            className="mt-16 bg-gradient-to-r from-gray-900/80 to-gray-900/40 border border-primary/40 p-8 rounded-xl font-mono text-sm shadow-lg shadow-primary/10 hover:border-primary/70 transition-all duration-300 backdrop-blur"
           >
             <div className="flex gap-2 mb-4">
-              <span className="w-3 h-3 rounded-full bg-red-500"></span>
-              <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
-              <span className="w-3 h-3 rounded-full bg-green-500"></span>
+              <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+              <span
+                className="w-3 h-3 rounded-full bg-yellow-500 animate-pulse"
+                style={{ animationDelay: "0.1s" }}
+              ></span>
+              <span
+                className="w-3 h-3 rounded-full bg-green-500 animate-pulse"
+                style={{ animationDelay: "0.2s" }}
+              ></span>
             </div>
-            <p className="text-primary mb-2">tech_workflow.yml</p>
-            <pre className="text-gray-400 text-xs leading-relaxed overflow-x-auto">
+            <p className="text-cyan-400 mb-2 font-bold">$ tech_workflow.yml</p>
+            <pre className="text-gray-300 text-xs leading-relaxed overflow-x-auto">
               {`workflow:
   frontend: React + Next.js + TypeScript + Tailwind CSS
   design: Figma + Adobe Photoshop
   backend: Node.js + Express + MySQL + Python
   deployment: GitHub → Vercel + AWS
-  status: active_development`}
+  status: active_development [enabled]`}
             </pre>
           </motion.div>
         </motion.div>

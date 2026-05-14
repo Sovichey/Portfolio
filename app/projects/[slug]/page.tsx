@@ -6,6 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProjectBySlug, Project } from "@/lib/projects-data";
 import { useParams, useRouter } from "next/navigation";
+import {
+  User,
+  Calendar,
+  Wrench,
+  ArrowUpRight,
+  Mail,
+  ArrowRight,
+  ArrowLeft,
+} from "lucide-react";
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -56,13 +65,17 @@ export default function ProjectDetailPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Back Button */}
-      <div className="sticky top-0 z-40 bg-background/80 backdrop-blur-sm border-b border-gray-700">
+      <div className="sticky top-0 z-40 bg-gradient-to-b from-background/90 to-background/70 backdrop-blur-xl border-b border-primary/20">
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-4">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary-fixed transition-colors font-mono text-sm uppercase"
+            className="inline-flex items-center gap-2 text-cyan-400 hover:text-primary transition-all duration-300 font-mono text-sm uppercase font-bold group leading-none"
           >
-            <span>←</span> Back to Projects
+            <ArrowLeft
+              size={16}
+              className="flex-shrink-0 group-hover:-translate-x-1 transition-transform"
+            />{" "}
+            Back to Projects
           </Link>
         </div>
       </div>
@@ -77,28 +90,29 @@ export default function ProjectDetailPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Left: Project Image */}
-            <div className="rounded-lg overflow-hidden bg-white relative">
+            <div className="rounded-2xl overflow-hidden bg-white relative group shadow-2xl shadow-primary/20">
               <div className="relative w-full aspect-video">
                 <Image
                   src={displayImage}
                   alt={project.title}
                   width={1200}
                   height={800}
-                  className="w-full h-full object-contain transition-opacity duration-500"
+                  className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
                   priority
                 />
               </div>
               {/* Image Carousel Dots */}
               {project.images && project.images.length > 1 && (
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+                <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
                   {project.images.map((_, index) => (
-                    <button
+                    <motion.button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
+                      whileHover={{ scale: 1.2 }}
+                      className={`transition-all rounded-full ${
                         index === currentImageIndex
-                          ? "bg-primary w-6"
-                          : "bg-gray-500 hover:bg-gray-400"
+                          ? "bg-primary w-6 h-2"
+                          : "bg-gray-400/60 hover:bg-gray-400 w-2 h-2"
                       }`}
                       aria-label={`Go to image ${index + 1}`}
                     />
@@ -109,25 +123,25 @@ export default function ProjectDetailPage() {
 
             {/* Right: Project Info */}
             <div className="flex flex-col justify-start">
-              <div className="mb-6">
-                <h1 className="text-4xl md:text-5xl font-bold font-mono mb-2 text-white">
+              <div className="mb-8">
+                <h1 className="text-5xl md:text-6xl font-bold font-mono mb-3 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
                   <span className="text-primary">[</span> {project.title}{" "}
                   <span className="text-primary">]</span>
                 </h1>
                 {project.company && (
-                  <p className="text-primary font-mono text-sm uppercase mb-4">
-                    {project.company}
+                  <p className="text-cyan-400 font-mono text-sm uppercase mb-4 font-bold">
+                    @ {project.company}
                   </p>
                 )}
               </div>
 
               {/* Role */}
               {project.role && (
-                <div className="mb-6 pb-6 border-b border-gray-700">
-                  <p className="text-xs font-mono text-gray-400 uppercase mb-2">
-                    Role
+                <div className="mb-8 pb-8 border-b border-primary/20">
+                  <p className="text-xs font-mono text-cyan-300 uppercase mb-2 font-bold flex items-center gap-2 leading-none">
+                    <User size={14} className="flex-shrink-0" /> Role
                   </p>
-                  <p className="text-lg font-semibold text-primary">
+                  <p className="text-xl font-bold text-primary">
                     {project.role}
                   </p>
                 </div>
@@ -135,11 +149,11 @@ export default function ProjectDetailPage() {
 
               {/* Timeline */}
               {(project.startDate || project.endDate) && (
-                <div className="mb-6">
-                  <p className="text-xs font-mono text-gray-400 uppercase mb-2">
-                    Timeline
+                <div className="mb-8">
+                  <p className="text-xs font-mono text-cyan-300 uppercase mb-2 font-bold flex items-center gap-2 leading-none">
+                    <Calendar size={14} className="flex-shrink-0" /> Timeline
                   </p>
-                  <p className="text-gray-300">
+                  <p className="text-gray-200 font-semibold">
                     {project.startDate}
                     {project.endDate ? ` - ${project.endDate}` : ""}
                   </p>
@@ -148,17 +162,21 @@ export default function ProjectDetailPage() {
 
               {/* Tech Stack */}
               <div className="mb-6">
-                <p className="text-xs font-mono text-gray-400 uppercase mb-3">
-                  Tech Stack
+                <p className="text-xs font-mono text-cyan-300 uppercase mb-4 font-bold flex items-center gap-2 leading-none">
+                  <Wrench size={14} className="flex-shrink-0" /> Tech Stack
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-3">
                   {project.tech.map((tech, idx) => (
-                    <span
+                    <motion.span
                       key={idx}
-                      className="px-3 py-1 bg-gray-800 border border-primary/30 text-primary text-xs rounded font-mono hover:border-primary transition-colors"
+                      whileHover={{
+                        y: -4,
+                        boxShadow: "0 8px 16px rgba(59, 130, 246, 0.3)",
+                      }}
+                      className="px-4 py-2 bg-gradient-to-br from-primary/20 to-cyan-400/10 border border-primary/50 text-primary text-xs rounded-lg font-mono hover:border-primary transition-all font-bold"
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </div>
@@ -220,41 +238,48 @@ export default function ProjectDetailPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 pt-12 border-t border-gray-700"
+          className="mt-16 pt-12 border-t border-primary/20"
         >
           <div className="text-center">
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-300 mb-8 text-lg font-semibold">
               Interested in collaborating or learning more?
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               {project.link && (
-                <a
+                <motion.a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-primary text-background font-mono font-bold rounded hover:bg-primary-fixed transition-colors uppercase text-sm"
+                  whileHover={{
+                    scale: 1.08,
+                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-mono font-bold rounded-lg hover:shadow-lg shadow-primary/40 transition-all uppercase text-sm leading-none"
                 >
                   {project.link.includes("figma")
                     ? "View Figma Design"
-                    : "View Website"}
-                </a>
+                    : "View Website"}{" "}
+                  <ArrowUpRight size={16} className="flex-shrink-0" />
+                </motion.a>
               )}
-              <Link
+              <motion.a
                 href="/#contact"
-                className={`px-6 py-3 ${
-                  project.link
-                    ? "border border-primary text-primary hover:bg-primary/10"
-                    : "bg-primary text-background hover:bg-primary-fixed"
-                } font-mono font-bold rounded transition-colors uppercase text-sm`}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block px-8 py-4 border-2 border-primary text-primary font-mono font-bold rounded-lg hover:bg-primary/10 transition-all uppercase text-sm shadow-lg shadow-primary/20 leading-none"
               >
-                Get in Touch
-              </Link>
-              <Link
+                Get in Touch <Mail size={16} className="inline flex-shrink-0" />
+              </motion.a>
+              <motion.a
                 href="/#projects"
-                className="px-6 py-3 border border-primary text-primary font-mono font-bold rounded hover:bg-primary/10 transition-colors uppercase text-sm"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-block px-8 py-4 border-2 border-primary text-primary font-mono font-bold rounded-lg hover:bg-primary/10 transition-all uppercase text-sm leading-none"
               >
-                View More Projects
-              </Link>
+                View More Projects{" "}
+                <ArrowRight size={16} className="inline flex-shrink-0" />
+              </motion.a>
             </div>
           </div>
         </motion.div>
