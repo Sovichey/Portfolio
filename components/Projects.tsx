@@ -15,7 +15,16 @@ import { projects } from "@/lib/projects-data";
 
 const certifications = [
   {
-    id: "04/01/2025",
+    id: "1",
+    title: "AUPP Alumni Connect App Challenge",
+    issuer: "American University of Phnom Penh",
+    date: "April 27, 2026",
+    image: "/certificate/alumini-app.png",
+    description:
+      "1st place winner in AUPP's alumni networking app competition.",
+  },
+  {
+    id: "2",
     title: "AWS Cloud Operations",
     issuer: "Amazon Web Services",
     date: "April 1, 2025",
@@ -23,7 +32,7 @@ const certifications = [
     description: "Cloud operations and management on AWS.",
   },
   {
-    id: "11/26/2024",
+    id: "3",
     title: "AWS Cloud Foundations",
     issuer: "Amazon Web Services",
     date: "November 26, 2024",
@@ -31,7 +40,7 @@ const certifications = [
     description: "Cloud computing fundamentals and AWS services.",
   },
   {
-    id: "03/30/2024",
+    id: "4",
     title: "IT Career Development Path for Gen Z",
     issuer: "ONE FRATERNITY",
     date: "March 30, 2024",
@@ -40,7 +49,7 @@ const certifications = [
       "In recognition of participation in the IT Career Development Path for Gen Z workshop.",
   },
   {
-    id: "07/03/2025",
+    id: "5",
     title: "Introduction to Front-End Development",
     issuer: "Meta (Coursera)",
     date: "July 3, 2025",
@@ -49,7 +58,7 @@ const certifications = [
       "An online course authorized by Meta and offered through Coursera",
   },
   {
-    id: "07/03/2025",
+    id: "6",
     title: "Introduction to Back-End Development",
     issuer: "Meta (Coursera)",
     date: "July 3, 2025",
@@ -144,7 +153,8 @@ export function Projects() {
                   </div>
                   <div className="flex justify-between items-start mb-4">
                     <span className="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1 leading-none">
-                      <Calendar size={12} className="flex-shrink-0" /> {cert.id}
+                      <Calendar size={12} className="flex-shrink-0" />{" "}
+                      {cert.date}
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">

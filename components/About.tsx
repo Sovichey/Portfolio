@@ -51,8 +51,8 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative group"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-2xl blur opacity-40 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-2xl shadow-2xl shadow-primary/20 group-hover:border-primary transition-all">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-full shadow-2xl shadow-primary/20 group-hover:border-primary transition-all">
                 <img
                   src="/my-pic.png"
                   alt="Profile"
