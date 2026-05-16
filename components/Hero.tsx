@@ -90,7 +90,7 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-full blur opacity-50"></div>
               <div className="relative w-full aspect-square bg-gray-900 border-2 border-primary/75 overflow-hidden rounded-full shadow-lg shadow-primary/30">
                 <img
-                  src="/my-profile.png"
+                  src="/my-profile-2.png"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
