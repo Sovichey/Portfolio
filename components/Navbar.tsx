@@ -92,7 +92,9 @@ export function Navbar() {
 
         {/* Resume Button */}
         <motion.a
-          href="#"
+          href="https://drive.google.com/file/d/13oPwN8QD2idh5cSjPG6XpU6tIHuDhqdG/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{
             scale: 1.05,
             boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
@@ -146,7 +148,9 @@ export function Navbar() {
               );
             })}
             <motion.a
-              href="#"
+              href="https://drive.google.com/file/d/13oPwN8QD2idh5cSjPG6XpU6tIHuDhqdG/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="block px-6 py-3 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold text-sm rounded-lg hover:shadow-lg shadow-primary/40 transition-all text-center mt-4"
