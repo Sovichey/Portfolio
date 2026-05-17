@@ -46,7 +46,7 @@ Visit `http://localhost:3000`
 - **Projects**: Edit `components/Projects.tsx` (project details, links)
 - **Colors**: Update `tailwind.config.ts` (primary, background, secondary)
 
-## � Project Structure
+## ⏳ Project Structure
 
 ```
 ├── app/
@@ -66,7 +66,7 @@ Visit `http://localhost:3000`
 └── styles/                 # Global styles
 ```
 
-## �🚀 Deploy to Vercel
+## 🚀 Deploy to Vercel
 
 1. Push to GitHub
 2. Connect repository at [vercel.com](https://vercel.com)
