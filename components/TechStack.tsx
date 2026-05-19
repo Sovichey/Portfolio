@@ -126,6 +126,12 @@ const technologies = {
       tags: ["PostgreSQL", "Auth"],
       image: "/techstack/supabase.png",
     },
+    {
+      name: "Firebase",
+      category: "Backend-as-a-Service",
+      tags: ["Realtime Database", "Auth", "Hosting"],
+      image: "/techstack/firebase-colored.svg",
+    },
   ],
 };
 
