@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: "Full-stack engineer and systems architect portfolio",
   generator: "v0.app",
   icons: {
-    icon: "/favicon.png",
+    icon: "/newfavicon.png",
   },
 };
 
