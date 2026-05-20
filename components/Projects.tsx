@@ -198,16 +198,23 @@ export function Projects() {
                   }}
                   className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-xl p-6 hover:border-primary/80 transition-all duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 hover:shadow-primary/25"
                 >
-                  <div className="mb-4 rounded-lg overflow-hidden bg-white h-48 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={600}
-                      height={400}
-                      className="w-auto h-auto max-w-full max-h-full object-contain"
-                      priority
-                    />
-                  </div>
+                  <Link href={`/projects/${project.slug}`}>
+                    <div className="mb-4 rounded-lg overflow-hidden bg-white h-48 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 cursor-pointer relative">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={600}
+                        height={400}
+                        className="w-auto h-auto max-w-full max-h-full object-contain"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                        <span className="text-white font-mono text-center font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4">
+                          [view project detail]
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
                   <h3 className="text-lg font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
