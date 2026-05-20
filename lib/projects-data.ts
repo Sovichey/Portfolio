@@ -88,6 +88,57 @@ export const projects: Project[] = [
     endDate: "Present",
     link: "https://www.figma.com/design/nlvXBbKtwFaXBU64U9qWdS/UI-badminton-saas?node-id=0-1&t=XAdk6OTO7cblLi4G-1",
   },
+  {
+    id: 5,
+    slug: "quickbite",
+    title: "QUICKBITE - Restaurant Ordering System",
+    shortDescription:
+      "A modern, real-time restaurant ordering system where customers scan QR codes on their tables to browse menus, place orders, and track status in real-time with dedicated staff and kitchen management views.",
+    description:
+      "Built a comprehensive restaurant ordering platform where customers scan QR codes on their tables to access the menu and order directly from their devices, with real-time order tracking and dedicated staff/kitchen management interfaces.",
+    fullDescription: [
+      "QUICKBITE is a modern, full-stack restaurant ordering and management system designed to streamline dining operations. Customers simply scan a QR code posted on their table to access the menu and ordering system on their own devices, eliminating the need for physical menus or waiter ordering.",
+      "The platform provides three distinct interfaces: a customer-facing ordering system accessible via QR code scanning, a staff management portal for order management, and a real-time kitchen view for order fulfillment. Implemented real-time data synchronization using Firebase Firestore, enabling instant order status updates across all devices without polling.",
+      "Customers can browse restaurant menus organized by categories, add items to cart with quantity selection, and track active orders in real-time from their table. Developed a secure staff login system with role-based access control. Staff members receive real-time order notifications and can update order statuses through a streamlined workflow (Pending → Preparing → Completed).",
+      "The kitchen view displays all pending and preparing orders with live synchronization, ensuring efficient order fulfillment. Engineered an admin dashboard for menu and category management, order analytics, and system configuration with responsive design optimized for mobile, tablet, and desktop devices using Radix UI and Tailwind CSS.",
+      "Features include secure Firebase Authentication, form validation with React Hook Form and Zod, toast notifications via Sonner, and analytics integration with Vercel Analytics. The entire system is production-ready and deployed on Vercel with proper error handling and user feedback mechanisms.",
+    ],
+    role: "Full-Stack Developer",
+    responsibilities: [
+      "Architected the complete application structure using Next.js app directory and React components",
+      "Implemented QR code integration for seamless table-to-device ordering experience",
+      "Implemented real-time Firebase Firestore integration for instant order synchronization across all views",
+      "Built customer interface with menu browsing, cart management, and active order tracking",
+      "Developed secure staff login system with Firebase Authentication and role-based access control",
+      "Created real-time kitchen management view with live order queue display and status updates",
+      "Designed admin dashboard for menu, category, and order analytics management",
+      "Deployed application to Vercel with proper environment variables and security rules",
+    ],
+    tech: [
+      "Next.js 16",
+      "React",
+      "TypeScript",
+      "Firebase Firestore",
+      "Firebase Authentication",
+      "Radix UI",
+      "Tailwind CSS",
+      "React Hook Form",
+      "Zod",
+      "Sonner",
+      "Lucide Icons",
+      "Vercel Analytics",
+      "QR Code Technology",
+    ],
+    image: "/projects/quickbite.png",
+    images: [
+      "/projects/quickbite.png",
+      "/projects/quickbite1.png",
+      "/projects/quickbite2.png",
+    ],
+    startDate: "May 2026",
+    endDate: "Present",
+    link: "https://quickbite-system.vercel.app/",
+  },
 ];
 
 export const getProjectBySlug = (slug: string): Project | undefined => {
