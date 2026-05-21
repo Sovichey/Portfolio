@@ -68,6 +68,17 @@ const certifications = [
   },
 ];
 
+const hoverSpring = {
+  type: "spring",
+  stiffness: 260,
+  damping: 24,
+  mass: 0.7,
+} as const;
+
+const hoverMotionStyle = { willChange: "transform, box-shadow" };
+const techChipClass =
+  "inline-flex min-h-8 items-center whitespace-nowrap px-3 py-1 bg-primary/10 border border-primary/40 text-cyan-300 text-xs rounded-sm font-mono group-hover:border-primary/70 group-hover:bg-primary/20 transition-colors duration-300";
+
 export function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"projects" | "certificates">(
@@ -99,9 +110,9 @@ export function Projects() {
           <div className="grid grid-cols-2 gap-2 md:gap-6 mb-12">
             <motion.button
               onClick={() => setActiveTab("projects")}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.04, transition: hoverSpring }}
               whileTap={{ scale: 0.95 }}
-              className={`py-4 font-mono text-base md:text-lg uppercase transition-all duration-300 border-b-2 rounded-t-lg font-bold text-center flex items-center justify-center gap-2 ${
+              className={`py-4 font-mono text-base md:text-lg uppercase transition-colors duration-300 border-b-2 rounded-none font-bold text-center flex items-center justify-center gap-2 transform-gpu ${
                 activeTab === "projects"
                   ? "border-primary text-primary"
                   : "border-transparent text-gray-400 hover:text-primary hover:border-primary/50"
@@ -112,9 +123,9 @@ export function Projects() {
             </motion.button>
             <motion.button
               onClick={() => setActiveTab("certificates")}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.04, transition: hoverSpring }}
               whileTap={{ scale: 0.95 }}
-              className={`py-4 font-mono text-base md:text-lg uppercase transition-all duration-300 border-b-2 rounded-t-lg font-bold text-center flex items-center justify-center gap-2 ${
+              className={`py-4 font-mono text-base md:text-lg uppercase transition-colors duration-300 border-b-2 rounded-none font-bold text-center flex items-center justify-center gap-2 transform-gpu ${
                 activeTab === "certificates"
                   ? "border-primary text-primary"
                   : "border-transparent text-gray-400 hover:text-primary hover:border-primary/50"
@@ -136,12 +147,15 @@ export function Projects() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   whileHover={{
-                    y: -12,
+                    y: -10,
+                    scale: 1.015,
                     boxShadow: "0 20px 40px rgba(0, 218, 243, 0.25)",
+                    transition: hoverSpring,
                   }}
-                  className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-xl p-6 hover:border-primary/80 transition-all duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 hover:shadow-primary/25"
+                  style={hoverMotionStyle}
+                  className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-none p-6 hover:border-primary/80 transition-colors duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 transform-gpu"
                 >
-                  <div className="mb-4 rounded-lg overflow-hidden bg-gray-800 aspect-video group-hover:scale-105 transition-transform duration-300">
+                  <div className="mb-4 rounded-none overflow-hidden bg-gray-800 aspect-video group-hover:scale-[1.03] transition-transform duration-500 ease-out transform-gpu">
                     <Image
                       src={cert.image}
                       alt={cert.title}
@@ -168,7 +182,7 @@ export function Projects() {
                   </p>
                   <motion.button
                     onClick={() => setSelectedImage(cert.image)}
-                    whileHover={{ gap: "12px" }}
+                    whileHover={{ x: 3, transition: hoverSpring }}
                     className="text-cyan-400 font-mono text-sm uppercase hover:text-primary transition-colors flex items-center gap-2 group/btn font-bold leading-none"
                   >
                     View Certificate
@@ -193,13 +207,16 @@ export function Projects() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   whileHover={{
-                    y: -12,
+                    y: -10,
+                    scale: 1.015,
                     boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
+                    transition: hoverSpring,
                   }}
-                  className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-xl p-6 hover:border-primary/80 transition-all duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 hover:shadow-primary/25"
+                  style={hoverMotionStyle}
+                  className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-none p-6 hover:border-primary/80 transition-colors duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 transform-gpu"
                 >
                   <Link href={`/projects/${project.slug}`}>
-                    <div className="mb-4 rounded-lg overflow-hidden bg-white h-48 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 cursor-pointer relative">
+                    <div className="mb-4 rounded-none overflow-hidden bg-white h-48 flex items-center justify-center group-hover:scale-[1.03] transition-transform duration-500 ease-out cursor-pointer relative transform-gpu">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -208,7 +225,7 @@ export function Projects() {
                         className="w-auto h-auto max-w-full max-h-full object-contain"
                         priority
                       />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
                         <span className="text-white font-mono text-center font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4">
                           [view project detail]
                         </span>
@@ -225,7 +242,7 @@ export function Projects() {
                     {project.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-primary/10 border border-primary/40 text-cyan-300 text-xs rounded-lg font-mono group-hover:border-primary/70 group-hover:bg-primary/20 transition-all"
+                        className={techChipClass}
                       >
                         {tech}
                       </span>
@@ -243,7 +260,7 @@ export function Projects() {
                       </p>
                     </div>
                   )}
-                  <motion.div whileHover={{ gap: "12px" }}>
+                  <motion.div whileHover={{ x: 3, transition: hoverSpring }}>
                     <Link
                       href={`/projects/${project.slug}`}
                       className="text-cyan-400 font-mono text-sm uppercase hover:text-primary transition-colors flex items-center gap-2 group/btn font-bold leading-none"

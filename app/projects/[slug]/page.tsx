@@ -16,6 +16,17 @@ import {
   ArrowLeft,
 } from "lucide-react";
 
+const hoverSpring = {
+  type: "spring",
+  stiffness: 260,
+  damping: 24,
+  mass: 0.7,
+} as const;
+
+const hoverMotionStyle = { willChange: "transform, box-shadow" };
+const techChipClass =
+  "inline-flex min-h-9 items-center whitespace-nowrap px-4 py-2 bg-gradient-to-br from-primary/20 to-cyan-400/10 border border-primary/50 text-primary text-xs rounded-sm font-mono hover:border-primary transition-colors duration-300 font-bold transform-gpu";
+
 export default function ProjectDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -69,7 +80,7 @@ export default function ProjectDetailPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-4">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-cyan-400 hover:text-primary transition-all duration-300 font-mono text-sm uppercase font-bold group leading-none"
+            className="inline-flex items-center gap-2 text-cyan-400 hover:text-primary transition-colors duration-300 font-mono text-sm uppercase font-bold group leading-none"
           >
             <ArrowLeft
               size={16}
@@ -90,14 +101,14 @@ export default function ProjectDetailPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Left: Project Image */}
-            <div className="rounded-2xl overflow-hidden bg-white relative group shadow-2xl shadow-primary/20">
+            <div className="rounded-none overflow-hidden bg-white relative group shadow-2xl shadow-primary/20 transform-gpu">
               <div className="relative w-full aspect-video">
                 <Image
                   src={displayImage}
                   alt={project.title}
                   width={1200}
                   height={800}
-                  className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 ease-out group-hover:scale-[1.03] transform-gpu"
                   priority
                 />
               </div>
@@ -108,8 +119,8 @@ export default function ProjectDetailPage() {
                     <motion.button
                       key={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      whileHover={{ scale: 1.2 }}
-                      className={`transition-all rounded-full ${
+                      whileHover={{ scale: 1.2, transition: hoverSpring }}
+                      className={`transition-colors duration-300 rounded-full transform-gpu ${
                         index === currentImageIndex
                           ? "bg-primary w-6 h-2"
                           : "bg-gray-400/60 hover:bg-gray-400 w-2 h-2"
@@ -172,8 +183,10 @@ export default function ProjectDetailPage() {
                       whileHover={{
                         y: -4,
                         boxShadow: "0 8px 16px rgba(59, 130, 246, 0.3)",
+                        transition: hoverSpring,
                       }}
-                      className="px-4 py-2 bg-gradient-to-br from-primary/20 to-cyan-400/10 border border-primary/50 text-primary text-xs rounded-lg font-mono hover:border-primary transition-all font-bold"
+                      style={hoverMotionStyle}
+                      className={techChipClass}
                     >
                       {tech}
                     </motion.span>
@@ -253,9 +266,11 @@ export default function ProjectDetailPage() {
                   whileHover={{
                     scale: 1.08,
                     boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)",
+                    transition: hoverSpring,
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-mono font-bold rounded-lg hover:shadow-lg shadow-primary/40 transition-all uppercase text-sm leading-none"
+                  style={hoverMotionStyle}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-mono font-bold rounded-none shadow-primary/40 transition-shadow duration-300 uppercase text-sm leading-none transform-gpu"
                 >
                   {project.link.includes("figma")
                     ? "View Figma Design"
@@ -265,17 +280,19 @@ export default function ProjectDetailPage() {
               )}
               <motion.a
                 href="/#contact"
-                whileHover={{ scale: 1.08 }}
+                whileHover={{ scale: 1.08, transition: hoverSpring }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-block px-8 py-4 border-2 border-primary text-primary font-mono font-bold rounded-lg hover:bg-primary/10 transition-all uppercase text-sm shadow-lg shadow-primary/20 leading-none"
+                style={{ willChange: "transform" }}
+                className="inline-block px-8 py-4 border-2 border-primary text-primary font-mono font-bold rounded-none hover:bg-primary/10 transition-colors duration-300 uppercase text-sm shadow-lg shadow-primary/20 leading-none transform-gpu"
               >
                 Get in Touch <Mail size={16} className="inline flex-shrink-0" />
               </motion.a>
               <motion.a
                 href="/#projects"
-                whileHover={{ scale: 1.08 }}
+                whileHover={{ scale: 1.08, transition: hoverSpring }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-block px-8 py-4 border-2 border-primary text-primary font-mono font-bold rounded-lg hover:bg-primary/10 transition-all uppercase text-sm leading-none"
+                style={{ willChange: "transform" }}
+                className="inline-block px-8 py-4 border-2 border-primary text-primary font-mono font-bold rounded-none hover:bg-primary/10 transition-colors duration-300 uppercase text-sm leading-none transform-gpu"
               >
                 View More Projects{" "}
                 <ArrowRight size={16} className="inline flex-shrink-0" />

@@ -71,7 +71,7 @@ export function Navbar() {
                 onClick={() => setActiveSection(item.href.slice(1))}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className={`text-sm transition-all font-mono relative py-2 px-3 rounded-lg ${
+                className={`text-sm transition-all font-mono relative py-2 px-3 rounded-none ${
                   isActive
                     ? "text-primary font-bold bg-primary/10"
                     : "text-gray-300 hover:text-primary hover:bg-primary/5"
@@ -100,7 +100,7 @@ export function Navbar() {
             boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
           }}
           whileTap={{ scale: 0.95 }}
-          className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold text-sm rounded-lg hover:shadow-lg shadow-primary/30 transition-all"
+          className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold text-sm rounded-none hover:shadow-lg shadow-primary/30 transition-all"
         >
           RESUME
         </motion.a>
@@ -137,7 +137,7 @@ export function Navbar() {
                   }}
                   whileHover={{ x: 8 }}
                   whileTap={{ x: 4 }}
-                  className={`block py-3 px-4 text-sm transition-all font-mono rounded-lg ${
+                  className={`block py-3 px-4 text-sm transition-all font-mono rounded-none ${
                     isActive
                       ? "text-primary font-bold bg-gradient-to-r from-primary/20 to-cyan-400/10 border-l-2 border-primary"
                       : "text-gray-300 hover:text-primary hover:bg-primary/5"
@@ -153,7 +153,7 @@ export function Navbar() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="block px-6 py-3 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold text-sm rounded-lg hover:shadow-lg shadow-primary/40 transition-all text-center mt-4"
+              className="block px-6 py-3 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold text-sm rounded-none hover:shadow-lg shadow-primary/40 transition-all text-center mt-4"
             >
               RESUME
             </motion.a>

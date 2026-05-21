@@ -4,7 +4,16 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import emailjs from "emailjs-com";
 import { emailConfig, isEmailConfigured } from "@/lib/emailConfig";
-import { Mail, ArrowUpRight } from "lucide-react";
+import { Mail } from "lucide-react";
+
+const hoverSpring = {
+  type: "spring",
+  stiffness: 260,
+  damping: 24,
+  mass: 0.7,
+} as const;
+
+const hoverMotionStyle = { willChange: "transform, box-shadow" };
 
 const socialLinks = [
   {
@@ -224,7 +233,13 @@ export function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative bg-gradient-to-br from-primary/10 via-gray-900/60 to-gray-900/40 border border-primary/40 rounded-xl p-8 overflow-hidden group shadow-lg shadow-primary/10 hover:border-primary/70 transition-all duration-300 backdrop-blur"
+              whileHover={{
+                y: -4,
+                boxShadow: "0 16px 32px rgba(0, 218, 243, 0.16)",
+                transition: hoverSpring,
+              }}
+              style={hoverMotionStyle}
+              className="relative bg-gradient-to-br from-primary/10 via-gray-900/60 to-gray-900/40 border border-primary/40 rounded-none p-8 overflow-hidden group shadow-lg shadow-primary/10 hover:border-primary/70 transition-colors duration-300 backdrop-blur transform-gpu"
             >
               {/* Animated background */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -245,11 +260,16 @@ export function Contact() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ x: 12, scale: 1.02 }}
+                      whileHover={{
+                        x: 8,
+                        scale: 1.015,
+                        transition: hoverSpring,
+                      }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center gap-4 p-4 bg-gray-800/30 hover:bg-primary/20 border border-gray-700/50 hover:border-primary/70 rounded-lg transition-all duration-300 group/link backdrop-blur-sm shadow-md hover:shadow-lg hover:shadow-primary/20"
+                      style={hoverMotionStyle}
+                      className="flex items-center gap-4 p-4 bg-gray-800/30 hover:bg-primary/20 border border-gray-700/50 hover:border-primary/70 rounded-none transition-[background-color,border-color,box-shadow] duration-300 group/link backdrop-blur-sm shadow-md hover:shadow-lg hover:shadow-primary/20 transform-gpu"
                     >
-                      <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-br from-primary/30 to-cyan-400/20 text-primary group-hover/link:from-primary/50 group-hover/link:to-cyan-400/40 group-hover/link:scale-110 transition-all duration-300 flex-shrink-0">
+                      <div className="w-12 h-12 flex items-center justify-center rounded-none bg-gradient-to-br from-primary/30 to-cyan-400/20 text-primary group-hover/link:from-primary/50 group-hover/link:to-cyan-400/40 group-hover/link:scale-110 transition-transform duration-500 ease-out flex-shrink-0 transform-gpu">
                         {link.icon}
                       </div>
                       <div className="flex-1">
@@ -261,7 +281,7 @@ export function Contact() {
                         </p>
                       </div>
                       <svg
-                        className="w-5 h-5 text-gray-500 group-hover/link:text-primary transition-all flex-shrink-0 group-hover/link:translate-x-1"
+                        className="w-5 h-5 text-gray-500 group-hover/link:text-primary transition-[color,transform] duration-300 flex-shrink-0 group-hover/link:translate-x-1"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -279,7 +299,7 @@ export function Contact() {
               </div>
 
               {/* Glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-cyan-400/30 rounded-xl blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-cyan-400/30 rounded-none blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
             </motion.div>
 
             {/* Contact Form */}
@@ -289,7 +309,13 @@ export function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
               onSubmit={handleSubmit}
-              className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur rounded-xl p-8 shadow-lg shadow-primary/10 hover:border-primary/60 transition-all duration-300"
+              whileHover={{
+                y: -4,
+                boxShadow: "0 16px 32px rgba(0, 218, 243, 0.14)",
+                transition: hoverSpring,
+              }}
+              style={hoverMotionStyle}
+              className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur rounded-none p-8 shadow-lg shadow-primary/10 hover:border-primary/60 transition-colors duration-300 transform-gpu"
             >
               <h3 className="text-2xl font-mono font-bold text-primary mb-8 flex items-center gap-3 leading-none">
                 <svg
@@ -313,7 +339,7 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-lg text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-all focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-none text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-[background-color,border-color,box-shadow] duration-300 focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
                   />
                 </div>
 
@@ -328,7 +354,7 @@ export function Contact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-lg text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-all focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-none text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-[background-color,border-color,box-shadow] duration-300 focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
                   />
                 </div>
 
@@ -343,7 +369,7 @@ export function Contact() {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-lg text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-all resize-none focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
+                    className="w-full px-4 py-3 bg-gray-800/50 border border-primary/30 rounded-none text-white placeholder-gray-500 focus:border-primary/80 focus:outline-none transition-[background-color,border-color,box-shadow] duration-300 resize-none focus:shadow-lg focus:shadow-primary/30 focus:bg-gray-800 backdrop-blur-sm hover:border-primary/50"
                   />
                 </div>
 
@@ -353,9 +379,11 @@ export function Contact() {
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                    transition: hoverSpring,
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-lg font-mono transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/40 hover:shadow-primary/60 flex items-center justify-center gap-2 leading-none"
+                  style={hoverMotionStyle}
+                  className="w-full px-6 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-none font-mono transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/40 hover:shadow-primary/60 flex items-center justify-center gap-2 leading-none transform-gpu"
                 >
                   {isSubmitting ? (
                     "Sending..."
@@ -370,7 +398,7 @@ export function Contact() {
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`text-sm text-center font-mono font-semibold rounded-lg p-3 ${
+                    className={`text-sm text-center font-mono font-semibold rounded-none p-3 ${
                       status.includes("success")
                         ? "text-green-300 bg-green-400/10 border border-green-400/30"
                         : status.includes("Sending")

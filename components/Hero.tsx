@@ -2,6 +2,15 @@
 
 import { motion } from "framer-motion";
 
+const hoverSpring = {
+  type: "spring",
+  stiffness: 260,
+  damping: 24,
+  mass: 0.7,
+} as const;
+
+const hoverMotionStyle = { willChange: "transform, box-shadow" };
+
 export function Hero() {
   return (
     <section
@@ -54,9 +63,11 @@ export function Hero() {
                 whileHover={{
                   scale: 1.08,
                   boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                  transition: hoverSpring,
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-lg shadow-lg shadow-primary/50 hover:shadow-xl hover:shadow-primary/70 transition-all duration-300 cursor-pointer relative overflow-hidden group"
+                style={hoverMotionStyle}
+                className="px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-none shadow-lg shadow-primary/50 transition-shadow duration-300 cursor-pointer relative overflow-hidden group transform-gpu"
               >
                 <span className="relative z-10">View My Work</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -66,9 +77,11 @@ export function Hero() {
                 whileHover={{
                   scale: 1.08,
                   boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+                  transition: hoverSpring,
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary/10 hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 backdrop-blur-sm"
+                style={hoverMotionStyle}
+                className="px-8 py-4 border-2 border-primary text-primary font-bold rounded-none hover:bg-primary/10 hover:border-cyan-400 hover:text-cyan-400 transition-colors duration-300 backdrop-blur-sm transform-gpu"
               >
                 Get in Touch
               </motion.a>
@@ -83,9 +96,9 @@ export function Hero() {
             className="flex justify-center md:justify-end order-1 md:order-2 mt-8 md:mt-0"
           >
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              className="relative"
+              whileHover={{ scale: 1.04, transition: hoverSpring }}
+              style={{ willChange: "transform" }}
+              className="relative transform-gpu"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-full blur opacity-50"></div>
               <div className="relative w-72 md:w-full aspect-square bg-gray-900 border-2 border-primary/75 overflow-hidden rounded-full shadow-lg shadow-primary/30">

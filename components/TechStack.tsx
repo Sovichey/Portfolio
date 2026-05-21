@@ -137,6 +137,17 @@ const technologies = {
 
 type TabType = "frontend" | "design" | "backend" | "cloud";
 
+const hoverSpring = {
+  type: "spring",
+  stiffness: 260,
+  damping: 24,
+  mass: 0.7,
+} as const;
+
+const hoverMotionStyle = { willChange: "transform, box-shadow" };
+const techChipClass =
+  "inline-flex min-h-8 items-center whitespace-nowrap px-3 py-1 bg-primary/10 border border-primary/40 text-cyan-300 text-xs rounded-sm font-mono group-hover:border-primary/70 group-hover:bg-primary/20 transition-colors duration-300";
+
 export function TechStack() {
   const [activeTab, setActiveTab] = useState<TabType>("frontend");
 
@@ -168,9 +179,9 @@ export function TechStack() {
                 <motion.button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.04, transition: hoverSpring }}
                   whileTap={{ scale: 0.95 }}
-                  className={`py-4 font-mono text-base md:text-lg uppercase transition-all duration-300 border-b-2 rounded-t-lg font-bold text-center flex items-center justify-center gap-2 ${
+                  className={`py-4 font-mono text-base md:text-lg uppercase transition-colors duration-300 border-b-2 rounded-none font-bold text-center flex items-center justify-center gap-2 transform-gpu ${
                     activeTab === tab
                       ? "border-primary text-primary"
                       : "border-transparent text-gray-400 hover:text-primary hover:border-primary/50"
@@ -214,37 +225,44 @@ export function TechStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{
-                  y: -8,
-                  boxShadow: "0 20px 30px rgba(59, 130, 246, 0.3)",
-                }}
-                className="group border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur p-6 rounded-xl hover:border-primary/80 transition-all duration-300 flex justify-between items-start shadow-lg shadow-primary/5 hover:shadow-primary/30"
+                className="h-full"
               >
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-                    {tech.name}
-                  </h3>
-                  <p className="text-cyan-400 text-sm font-mono mb-4 font-semibold">
-                    {tech.category}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {tech.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-primary/10 border border-primary/40 text-cyan-300 text-xs rounded-lg font-mono group-hover:border-primary/70 group-hover:bg-primary/20 transition-all"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <motion.div
+                  whileHover={{
+                    y: -8,
+                    scale: 1.012,
+                    boxShadow: "0 20px 30px rgba(59, 130, 246, 0.3)",
+                  }}
+                  transition={hoverSpring}
+                  style={hoverMotionStyle}
+                  className="group h-full border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur p-6 rounded-none hover:border-primary/80 transition-colors duration-300 flex justify-between items-start shadow-lg shadow-primary/5 transform-gpu"
+                >
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                      {tech.name}
+                    </h3>
+                    <p className="text-cyan-400 text-sm font-mono mb-4 font-semibold">
+                      {tech.category}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {tech.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className={techChipClass}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                {tech.image && (
-                  <img
-                    src={tech.image}
-                    alt={tech.name}
-                    className="w-16 h-16 ml-4 object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                )}
+                  {tech.image && (
+                    <img
+                      src={tech.image}
+                      alt={tech.name}
+                      className="w-16 h-16 ml-4 object-contain group-hover:scale-110 transition-transform duration-500 ease-out transform-gpu"
+                    />
+                  )}
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>
@@ -255,8 +273,17 @@ export function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-16 bg-gradient-to-r from-gray-900/80 to-gray-900/40 border border-primary/40 p-8 rounded-xl font-mono text-sm shadow-lg shadow-primary/10 hover:border-primary/70 transition-all duration-300 backdrop-blur"
+            className="mt-16"
           >
+            <motion.div
+              whileHover={{
+                y: -4,
+                boxShadow: "0 16px 28px rgba(0, 218, 243, 0.18)",
+              }}
+              transition={hoverSpring}
+              style={hoverMotionStyle}
+              className="bg-gradient-to-r from-gray-900/80 to-gray-900/40 border border-primary/40 p-8 rounded-none font-mono text-sm shadow-lg shadow-primary/10 hover:border-primary/70 transition-colors duration-300 backdrop-blur transform-gpu"
+            >
             <div className="flex gap-2 mb-4">
               <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
               <span
@@ -277,6 +304,7 @@ export function TechStack() {
   deployment: GitHub → Vercel + AWS
   status: active_development [enabled]`}
             </pre>
+            </motion.div>
           </motion.div>
         </motion.div>
       </div>

@@ -3,6 +3,17 @@
 import { motion } from "framer-motion";
 import { Calendar, CheckCircle } from "lucide-react";
 
+const hoverSpring = {
+  type: "spring",
+  stiffness: 260,
+  damping: 24,
+  mass: 0.7,
+} as const;
+
+const hoverMotionStyle = { willChange: "transform, box-shadow" };
+const skillTagClass =
+  "px-3 py-1 bg-primary/10 border border-primary/50 text-cyan-300 text-xs rounded-sm font-mono group-hover:border-primary/80 group-hover:bg-primary/20 transition-colors duration-300 inline-flex items-center gap-1 leading-none";
+
 export function About() {
   const education = [
     {
@@ -11,6 +22,8 @@ export function About() {
       school: "American University of Phnom Penh",
       gpa: "3.55 / 4.00",
       skills: ["Web Development", "Frontend Design", "Software Development"],
+      logo: "/AUPP Block Logo.png",
+      logoAlt: "American University of Phnom Penh logo",
     },
     {
       year: "2017 – 2022",
@@ -18,6 +31,8 @@ export function About() {
       school: "Sovannaphumi School, Chumpouvorn I Campus",
       gpa: "Grade B",
       skills: [],
+      logo: "/sovannaphumi-school-logo.png",
+      logoAlt: "Sovannaphumi School logo",
     },
   ];
 
@@ -51,12 +66,12 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative group"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-full shadow-2xl shadow-primary/20 group-hover:border-primary transition-all">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-full shadow-2xl shadow-primary/20 group-hover:border-primary transition-colors duration-300">
                 <img
                   src="/my-pic.png"
                   alt="Profile"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out transform-gpu"
                 />
               </div>
             </motion.div>
@@ -69,7 +84,7 @@ export function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex flex-col gap-2"
             >
-              <div className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur-sm p-6 rounded-2xl space-y-4 flex-shrink-0 hover:border-primary/60 transition-all duration-300 group shadow-lg shadow-primary/10">
+              <div className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur-sm p-6 rounded-none space-y-4 flex-shrink-0 hover:border-primary/60 transition-colors duration-300 group shadow-lg shadow-primary/10">
                 <p className="text-gray-200 leading-relaxed text-lg">
                   I am a{" "}
                   <span className="text-primary font-bold">
@@ -117,8 +132,10 @@ export function About() {
                     y: -5,
                     borderColor: "#00daf3",
                     boxShadow: "0 10px 20px rgba(0, 218, 243, 0.3)",
+                    transition: hoverSpring,
                   }}
-                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-xl text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400"
+                  style={hoverMotionStyle}
+                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
                 >
                   <p className="text-primary font-mono text-2xl md:text-3xl font-bold mb-1">
                     4+
@@ -133,8 +150,10 @@ export function About() {
                     y: -5,
                     borderColor: "#00daf3",
                     boxShadow: "0 10px 20px rgba(0, 218, 243, 0.3)",
+                    transition: hoverSpring,
                   }}
-                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-xl text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400"
+                  style={hoverMotionStyle}
+                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
                 >
                   <p className="text-cyan-400 font-mono text-2xl md:text-3xl font-bold mb-1">
                     10+
@@ -149,8 +168,10 @@ export function About() {
                     y: -5,
                     borderColor: "#00daf3",
                     boxShadow: "0 10px 20px rgba(0, 218, 243, 0.3)",
+                    transition: hoverSpring,
                   }}
-                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-xl text-center transition-all duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400"
+                  style={hoverMotionStyle}
+                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
                 >
                   <p className="text-primary font-mono text-2xl md:text-3xl font-bold mb-1">
                     15+
@@ -191,48 +212,58 @@ export function About() {
                   className="relative pl-16 py-4 group"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-0 top-4 w-7 h-7 bg-background border-2 border-primary rounded-full flex items-center justify-center group-hover:scale-125 transition-transform">
+                  <div className="absolute left-0 top-4 w-7 h-7 bg-background border-2 border-primary rounded-full flex items-center justify-center group-hover:scale-125 transition-transform duration-300 ease-out transform-gpu">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
                   </div>
 
                   {/* Content */}
-                  <div className="bg-gradient-to-r from-gray-900/50 to-gray-900/30 border border-primary/30 backdrop-blur rounded-xl p-5 group-hover:border-primary/70 transition-all duration-300 shadow-lg shadow-primary/5 group-hover:shadow-primary/20">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4 mb-3">
-                      <div>
-                        <p className="text-cyan-400 text-sm font-mono font-bold mb-2 flex items-center gap-2 leading-none">
-                          <Calendar size={16} className="flex-shrink-0" />{" "}
-                          {edu.year}
-                        </p>
-                        <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">
-                          {edu.degree}
-                        </h4>
-                        <p className="text-gray-400 text-sm mt-1">
-                          {edu.school}
-                        </p>
-                      </div>
-                      {edu.gpa && (
-                        <div className="bg-gradient-to-r from-primary/20 to-cyan-400/20 border border-primary/50 px-4 py-2 rounded-lg w-fit whitespace-nowrap group-hover:border-primary group-hover:bg-primary/30 transition-all">
-                          <p className="text-cyan-400 font-mono text-sm font-bold">
-                            {edu.gpa.includes("/")
-                              ? `GPA: ${edu.gpa}`
-                              : edu.gpa}
-                          </p>
+                  <div className="bg-gradient-to-r from-gray-900/50 to-gray-900/30 border border-primary/30 backdrop-blur rounded-none p-5 group-hover:border-primary/70 transition-colors duration-300 shadow-lg shadow-primary/5 group-hover:shadow-primary/20">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                      <img
+                        src={edu.logo}
+                        alt={edu.logoAlt}
+                        className="h-24 w-24 shrink-0 object-contain sm:h-28 sm:w-28"
+                      />
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4 mb-3">
+                          <div>
+                            <p className="text-cyan-400 text-sm font-mono font-bold mb-2 flex items-center gap-2 leading-none">
+                              <Calendar size={16} className="flex-shrink-0" />{" "}
+                              {edu.year}
+                            </p>
+                            <h4 className="text-lg md:text-xl font-bold text-white group-hover:text-primary transition-colors">
+                              {edu.degree}
+                            </h4>
+                            <p className="text-gray-400 text-sm mt-1">
+                              {edu.school}
+                            </p>
+                          </div>
+                          {edu.gpa && (
+                            <div className="bg-gradient-to-r from-primary/20 to-cyan-400/20 border border-primary/50 px-4 py-2 rounded-none w-fit whitespace-nowrap group-hover:border-primary group-hover:bg-primary/30 transition-colors duration-300">
+                              <p className="text-cyan-400 font-mono text-sm font-bold">
+                                {edu.gpa.includes("/")
+                                  ? `GPA: ${edu.gpa}`
+                                  : edu.gpa}
+                              </p>
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    {edu.skills.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {edu.skills.map((skill, i) => (
-                          <span
-                            key={i}
-                            className="px-3 py-1 bg-primary/10 border border-primary/50 text-cyan-300 text-xs rounded-lg font-mono group-hover:border-primary/80 group-hover:bg-primary/20 transition-all inline-flex items-center gap-1 leading-none"
-                          >
-                            <CheckCircle size={12} className="flex-shrink-0" />{" "}
-                            {skill}
-                          </span>
-                        ))}
+                        {edu.skills.length > 0 && (
+                          <div className="flex flex-wrap gap-2 mt-4">
+                            {edu.skills.map((skill, i) => (
+                              <span key={i} className={skillTagClass}>
+                                <CheckCircle
+                                  size={12}
+                                  className="flex-shrink-0"
+                                />{" "}
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
