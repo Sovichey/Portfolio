@@ -15,10 +15,15 @@ export function ScrollProgress() {
   if (shouldReduceMotion) return null;
 
   return (
-    <div className="fixed left-0 top-0 z-[60] h-1.5 w-full bg-primary/10">
+    <div className="fixed left-0 top-0 z-[120] h-1.5 w-full overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-primary/15" />
       <motion.div
-        className="h-full w-full origin-left bg-gradient-to-r from-primary/80 via-cyan-300 to-primary/80 shadow-[0_0_6px_rgba(0,218,243,0.35)]"
-        style={{ scaleX, willChange: "transform" }}
+        className="relative h-full w-full origin-left bg-gradient-to-r from-primary via-cyan-300 to-primary shadow-[0_0_4px_rgba(0,218,243,0.3)]"
+        style={{
+          scaleX,
+          transform: "translateZ(0)",
+          willChange: "transform",
+        }}
       />
     </div>
   );

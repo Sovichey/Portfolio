@@ -57,17 +57,16 @@ export function About() {
             INITIALIZATION... SUCCESS
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+          <div className="mx-auto grid w-fit md:grid-cols-[auto_minmax(0,1fr)] gap-3 md:gap-5 items-start md:items-stretch">
             {/* Profile Image */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative group"
+              className="relative group md:justify-self-end"
             >
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary via-cyan-400 to-primary rounded-full blur opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div className="relative w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-full shadow-2xl shadow-primary/20 group-hover:border-primary transition-colors duration-300">
+              <div className="relative mx-auto h-80 w-full max-w-xs bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-primary/50 overflow-hidden rounded-none group-hover:border-primary transition-colors duration-300 md:mx-0 md:h-[460px] md:w-[420px] lg:w-[440px]">
                 <img
                   src="/my-pic.png"
                   alt="Profile"
@@ -82,10 +81,10 @@ export function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex flex-col gap-2"
+              className="flex h-full max-w-3xl flex-col gap-3 md:h-[460px]"
             >
-              <div className="bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur-sm p-6 rounded-none space-y-4 flex-shrink-0 hover:border-primary/60 transition-colors duration-300 group shadow-lg shadow-primary/10">
-                <p className="text-gray-200 leading-relaxed text-lg">
+              <div className="flex-1 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-primary/30 backdrop-blur-sm p-5 rounded-none space-y-3 hover:border-primary/60 transition-colors duration-300 group shadow-lg shadow-primary/10">
+                <p className="text-gray-200 leading-relaxed text-base">
                   I am a{" "}
                   <span className="text-primary font-bold">
                     senior Information and Communication Technology (ICT)
@@ -106,7 +105,7 @@ export function About() {
                   </span>
                   .
                 </p>
-                <p className="text-gray-200 leading-relaxed text-lg">
+                <p className="text-gray-200 leading-relaxed text-base">
                   As I approach graduation, my drive to evolve with the
                   fast-paced tech industry remains stronger than ever. I am
                   committed to{" "}
@@ -126,7 +125,7 @@ export function About() {
               </div>
 
               {/* Highlight Boxes */}
-              <div className="grid grid-cols-3 gap-3 md:gap-4 flex-1">
+              <div className="grid grid-cols-3 gap-2 md:gap-3">
                 <motion.div
                   whileHover={{
                     y: -5,
@@ -135,12 +134,12 @@ export function About() {
                     transition: hoverSpring,
                   }}
                   style={hoverMotionStyle}
-                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
+                  className="min-h-20 bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur px-3 py-2 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
                 >
-                  <p className="text-primary font-mono text-2xl md:text-3xl font-bold mb-1">
+                  <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
                     4+
                   </p>
-                  <p className="text-gray-300 text-xs md:text-sm font-mono font-semibold">
+                  <p className="text-gray-300 text-[11px] md:text-xs font-mono font-semibold">
                     Years in Tech
                   </p>
                 </motion.div>
@@ -153,12 +152,12 @@ export function About() {
                     transition: hoverSpring,
                   }}
                   style={hoverMotionStyle}
-                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
+                  className="min-h-20 bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur px-3 py-2 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
                 >
-                  <p className="text-cyan-400 font-mono text-2xl md:text-3xl font-bold mb-1">
+                  <p className="text-cyan-400 font-mono text-xl md:text-2xl font-bold mb-1">
                     10+
                   </p>
-                  <p className="text-gray-300 text-xs md:text-sm font-mono font-semibold">
+                  <p className="text-gray-300 text-[11px] md:text-xs font-mono font-semibold">
                     Projects Built
                   </p>
                 </motion.div>
@@ -171,12 +170,12 @@ export function About() {
                     transition: hoverSpring,
                   }}
                   style={hoverMotionStyle}
-                  className="bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur p-4 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
+                  className="min-h-20 bg-gradient-to-br from-gray-900/60 to-gray-900/30 border-2 border-primary/40 backdrop-blur px-3 py-2 rounded-none text-center transition-colors duration-300 cursor-pointer flex flex-col items-center justify-center hover:border-cyan-400 transform-gpu"
                 >
-                  <p className="text-primary font-mono text-2xl md:text-3xl font-bold mb-1">
+                  <p className="text-primary font-mono text-xl md:text-2xl font-bold mb-1">
                     15+
                   </p>
-                  <p className="text-gray-300 text-xs md:text-sm font-mono font-semibold">
+                  <p className="text-gray-300 text-[11px] md:text-xs font-mono font-semibold">
                     Technologies
                   </p>
                 </motion.div>

@@ -233,17 +233,8 @@ export function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              whileHover={{
-                y: -4,
-                boxShadow: "0 16px 32px rgba(0, 218, 243, 0.16)",
-                transition: hoverSpring,
-              }}
-              style={hoverMotionStyle}
-              className="relative bg-gradient-to-br from-primary/10 via-gray-900/60 to-gray-900/40 border border-primary/40 rounded-none p-8 overflow-hidden group shadow-lg shadow-primary/10 hover:border-primary/70 transition-colors duration-300 backdrop-blur transform-gpu"
+              className="relative bg-gradient-to-br from-primary/10 via-gray-900/60 to-gray-900/40 border border-primary/40 rounded-none p-8 overflow-hidden group transition-colors duration-300 backdrop-blur"
             >
-              {/* Animated background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
               <div className="relative z-10">
                 <h3 className="text-2xl font-mono font-bold text-white mb-2 flex items-center gap-3">
                   <span className="inline-block w-1 h-8 bg-gradient-to-b from-primary to-cyan-400 rounded-full"></span>
@@ -297,9 +288,6 @@ export function Contact() {
                   ))}
                 </div>
               </div>
-
-              {/* Glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-cyan-400/30 rounded-none blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
             </motion.div>
 
             {/* Contact Form */}
@@ -378,12 +366,11 @@ export function Contact() {
                   disabled={isSubmitting}
                   whileHover={{
                     scale: 1.05,
-                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
                     transition: hoverSpring,
                   }}
                   whileTap={{ scale: 0.95 }}
-                  style={hoverMotionStyle}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-none font-mono transition-shadow duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/40 hover:shadow-primary/60 flex items-center justify-center gap-2 leading-none transform-gpu"
+                  style={{ willChange: "transform" }}
+                  className="w-full px-6 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-none font-mono shadow-none hover:shadow-none transition-opacity duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 leading-none transform-gpu"
                 >
                   {isSubmitting ? (
                     "Sending..."

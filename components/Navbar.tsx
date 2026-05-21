@@ -47,7 +47,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/10">
+    <nav className="fixed left-0 top-1.5 w-full z-[90] bg-background/80 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/10">
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex justify-between items-center">
         {/* Logo */}
         <motion.a
