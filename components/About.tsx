@@ -218,14 +218,14 @@ export function About() {
 
                   {/* Content */}
                   <div className="bg-gradient-to-r from-gray-900/50 to-gray-900/30 border border-primary/30 backdrop-blur rounded-none p-5 group-hover:border-primary/70 transition-colors duration-300 shadow-lg shadow-primary/5 group-hover:shadow-primary/20">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                    <div className="flex flex-col items-center sm:flex-row sm:items-center gap-5">
                       <img
                         src={edu.logo}
                         alt={edu.logoAlt}
-                        className="h-24 w-24 shrink-0 object-contain sm:h-28 sm:w-28"
+                        className="h-36 w-36 shrink-0 object-contain sm:h-28 sm:w-28"
                       />
 
-                      <div className="min-w-0 flex-1">
+                      <div className="min-w-0 flex-1 w-full">
                         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4 mb-3">
                           <div>
                             <p className="text-cyan-400 text-sm font-mono font-bold mb-2 flex items-center gap-2 leading-none">
