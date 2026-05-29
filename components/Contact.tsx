@@ -370,7 +370,11 @@ export function Contact() {
                   }}
                   whileTap={{ scale: 0.95 }}
                   style={{ willChange: "transform" }}
-                  className="w-full px-6 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-bold rounded-none font-mono shadow-none hover:shadow-none transition-opacity duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 leading-none transform-gpu"
+                  className={`w-full px-6 py-4 font-bold rounded-none font-mono shadow-none hover:shadow-none transition-[background-color,border-color,color,opacity] duration-300 disabled:cursor-not-allowed flex items-center justify-center gap-2 leading-none transform-gpu ${
+                    isSubmitting
+                      ? "border border-cyan-400/30 bg-cyan-400/10 text-cyan-300"
+                      : "bg-gradient-to-r from-primary to-cyan-400 text-background"
+                  }`}
                 >
                   {isSubmitting ? (
                     "Sending..."
@@ -381,16 +385,14 @@ export function Contact() {
                   )}
                 </motion.button>
 
-                {status && (
+                {status && !status.includes("Sending") && (
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`text-sm text-center font-mono font-semibold rounded-none p-3 ${
                       status.includes("success")
                         ? "text-green-300 bg-green-400/10 border border-green-400/30"
-                        : status.includes("Sending")
-                          ? "text-cyan-300 bg-cyan-400/10 border border-cyan-400/30"
-                          : "text-red-300 bg-red-400/10 border border-red-400/30"
+                        : "text-red-300 bg-red-400/10 border border-red-400/30"
                     }`}
                   >
                     {status}
