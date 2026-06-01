@@ -155,7 +155,12 @@ export function Projects() {
                   style={hoverMotionStyle}
                   className="border border-primary/30 bg-gradient-to-br from-gray-900/60 to-gray-900/30 backdrop-blur rounded-none p-6 hover:border-primary/80 transition-colors duration-300 cursor-pointer group flex flex-col h-full shadow-lg shadow-primary/5 transform-gpu"
                 >
-                  <div className="mb-4 rounded-none overflow-hidden bg-gray-800 aspect-video group-hover:scale-[1.03] transition-transform duration-500 ease-out transform-gpu">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedImage(cert.image)}
+                    className="mb-4 rounded-none overflow-hidden bg-gray-800 aspect-video group-hover:scale-[1.03] transition-transform duration-500 ease-out transform-gpu relative w-full text-left"
+                    aria-label={`View certificate for ${cert.title}`}
+                  >
                     <Image
                       src={cert.image}
                       alt={cert.title}
@@ -164,7 +169,12 @@ export function Projects() {
                       className="w-full h-full object-cover"
                       priority
                     />
-                  </div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                      <span className="text-white font-mono text-center font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-4">
+                        [view certificate]
+                      </span>
+                    </div>
+                  </button>
                   <div className="flex justify-between items-start mb-4">
                     <span className="text-xs font-mono text-cyan-400 uppercase font-bold flex items-center gap-1 leading-none">
                       <Calendar size={12} className="flex-shrink-0" />{" "}

@@ -123,14 +123,15 @@ export function Hero() {
                 href="#contact"
                 whileHover={{
                   scale: 1.08,
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+                  boxShadow: "0 0 20px rgba(0, 218, 243, 0.4)",
                   transition: hoverSpring,
                 }}
                 whileTap={{ scale: 0.95 }}
                 style={hoverMotionStyle}
-                className="px-8 py-4 border-2 border-primary text-primary font-bold rounded-none hover:bg-primary/10 hover:border-cyan-400 hover:text-cyan-400 transition-colors duration-300 backdrop-blur-sm transform-gpu"
+                className="relative overflow-hidden px-8 py-4 border-2 border-primary text-primary font-bold rounded-none transition-colors duration-300 backdrop-blur-sm transform-gpu group hover:border-primary hover:text-background"
               >
-                Get in Touch
+                <span className="relative z-10">Get in Touch</span>
+                <div className="absolute inset-0 bg-primary -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
               </motion.a>
             </motion.div>
           </motion.div>
