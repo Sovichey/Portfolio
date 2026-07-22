@@ -13,6 +13,8 @@ export interface Project {
   startDate?: string;
   endDate?: string;
   link?: string;
+  secondaryLink?: string;
+  secondaryLinkLabel?: string;
   company?: string;
 }
 
@@ -22,22 +24,22 @@ export const projects: Project[] = [
     slug: "joulhub",
     title: "JoulHub",
     shortDescription:
-      "Property management platform connecting property owners with automated billing and tenant management.",
+      "Property management website and mobile app with a sales-led go-to-market focus and UX/UI improvements for property owners and landlords.",
     description:
-      "Co-founded JoulHub, a comprehensive platform for property owners and landlords to manage their properties efficiently.",
+      "Co-founded JoulHub and supported its growth through sales, client discovery, and UX/UI design improvements for its website and mobile app.",
     fullDescription: [
-      "JoulHub is a property management platform designed to streamline operations for property owners and landlords. The platform automates critical business processes and provides an intuitive interface for managing tenant records and billing.",
-      "As Co-Founder and Product & Sales Lead, I was responsible for understanding market needs and translating them into actionable features.",
-      "Led comprehensive UI/UX audits to ensure the platform delivered an intuitive user experience that was market-ready and competitive.",
-      "Spearheaded go-to-market strategy and served as the primary sales contact, building relationships with property owners and landlords.",
+      "JoulHub is a property management website and mobile app designed to help property owners and landlords streamline day-to-day operations, tenant records, and billing in one organized system.",
+      "In my role across sales and UX/UI design, I worked closely with potential users to understand their needs, shape the product direction, and improve how both the website and mobile app were presented and experienced.",
+      "I refined the interface and user flow to make the experience more intuitive, professional, and easier to use across both platforms.",
+      "I also supported the go-to-market effort by handling outreach, product conversations, and relationship-building with prospective clients.",
     ],
-    role: "Co-Founder | Product & Sales Lead",
+    role: "Co-Founder | Sales & UX/UI Design",
     responsibilities: [
-      "Pitched the platform to property owners and landlords, serving as the primary sales contact",
-      "Translated client pain points into actionable feature requests for the development team",
-      "Audited UI/UX end-to-end to ensure the product was intuitive and market-ready",
-      "Tested core features, automated billing and tenant records, ensuring reliability before client demos",
-      "Identified product gaps from sales feedback and led implementation of critical missing features",
+      "Led outreach and product conversations with property owners and landlords as part of the sales process",
+      "Turned client feedback into actionable product and feature improvements",
+      "Reviewed and improved the UI/UX for both the website and mobile app to make the platform more intuitive and market-ready",
+      "Worked on interface flow and visual presentation to strengthen the user experience across both platforms",
+      "Supported product testing and demo preparation to ensure the platform was ready for client presentations",
     ],
     tech: [
       "Property Management",
@@ -50,6 +52,9 @@ export const projects: Project[] = [
     endDate: "Present",
     company: "JoulHub",
     link: "https://joulhub.com/",
+    secondaryLink:
+      "https://www.figma.com/design/Mbxw03hUKZISBFKfIWJKSV/JoulHub-Mobile-app?node-id=0-1&t=eKjl8uJzecqwoqTv-1",
+    secondaryLinkLabel: "View Mobile App Design",
   },
   {
     id: 4,

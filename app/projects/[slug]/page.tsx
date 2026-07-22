@@ -278,6 +278,24 @@ export default function ProjectDetailPage() {
                   <ArrowUpRight size={16} className="flex-shrink-0" />
                 </motion.a>
               )}
+              {project.secondaryLink && (
+                <motion.a
+                  href={project.secondaryLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{
+                    scale: 1.08,
+                    boxShadow: "0 0 30px rgba(59, 130, 246, 0.5)",
+                    transition: hoverSpring,
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  style={hoverMotionStyle}
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-cyan-400 text-background font-mono font-bold rounded-none shadow-primary/40 transition-shadow duration-300 uppercase text-sm leading-none transform-gpu"
+                >
+                  {project.secondaryLinkLabel ?? "View Link"}{" "}
+                  <ArrowUpRight size={16} className="flex-shrink-0" />
+                </motion.a>
+              )}
               <motion.a
                 href="/#contact"
                 whileHover={{ scale: 1.08, transition: hoverSpring }}
