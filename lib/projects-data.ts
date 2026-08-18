@@ -142,7 +142,7 @@ export const projects: Project[] = [
     ],
     startDate: "May 2026",
     endDate: "Present",
-    link: "https://quickbite-system.vercel.app/",
+    link: "https://quick-qr-ordering.vercel.app/",
   },
 ];
 
