@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${spaceGrotesk.variable} bg-background dark scroll-smooth`}
     >
       <body className="font-sans antialiased text-on-background bg-background">
