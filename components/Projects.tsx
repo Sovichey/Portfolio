@@ -4,7 +4,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Briefcase, Award, ArrowUpRight, Calendar } from "lucide-react";
+import {
+  Briefcase,
+  Award,
+  Palette,
+  ArrowUpRight,
+  Calendar,
+} from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -68,6 +74,21 @@ const certifications = [
   },
 ];
 
+const visualDesigns = [
+  { image: "/Design/iP17.jpg" },
+  { image: "/Design/Ferrari.png" },
+  { image: "/Design/demonslayer.jpg" },
+  { image: "/Design/ANGKORWAT.png" },
+  { image: "/Design/AKAZA.jpg" },
+  { image: "/Design/new year.jpg" },
+  { image: "/Design/Merry christmas.jpg" },
+  { image: "/Design/Mango Ice-cream.jpg" },
+  { image: "/Design/PreahVihear.jpg" },
+  { image: "/Design/white monster.jpg" },
+  { image: "/Design/Lamborghini.png" },
+  { image: "/Design/starbuck.png" },
+];
+
 const hoverSpring = {
   type: "spring",
   stiffness: 260,
@@ -81,14 +102,14 @@ const techChipClass =
 
 export function Projects() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"projects" | "certificates">(
-    "projects",
-  );
+  const [activeTab, setActiveTab] = useState<
+    "projects" | "design" | "certificates"
+  >("projects");
 
   return (
     <section
       id="projects"
-      className="py-12 px-4 md:px-8 bg-background scroll-mt-16"
+      className="py-12 px-4 md:px-8 bg-background scroll-mt-28"
     >
       <div className="max-w-6xl mx-auto">
         <motion.div
@@ -107,7 +128,7 @@ export function Projects() {
           </p>
 
           {/* Tabs */}
-          <div className="grid grid-cols-2 gap-2 md:gap-6 mb-12">
+          <div className="grid grid-cols-3 gap-2 md:gap-6 mb-12">
             <motion.button
               onClick={() => setActiveTab("projects")}
               whileHover={{ scale: 1.04, transition: hoverSpring }}
@@ -118,8 +139,21 @@ export function Projects() {
                   : "border-transparent text-gray-400 hover:text-primary hover:border-primary/50"
               }`}
             >
-              <Briefcase size={20} />
-              <span>Projects</span>
+              <Briefcase size={20} className="hidden sm:block" />
+              <span>Development</span>
+            </motion.button>
+            <motion.button
+              onClick={() => setActiveTab("design")}
+              whileHover={{ scale: 1.04, transition: hoverSpring }}
+              whileTap={{ scale: 0.95 }}
+              className={`py-4 font-mono text-sm md:text-lg uppercase transition-colors duration-300 border-b-2 rounded-none font-bold text-center flex items-center justify-center gap-2 transform-gpu ${
+                activeTab === "design"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-400 hover:text-primary hover:border-primary/50"
+              }`}
+            >
+              <Palette size={20} className="hidden sm:block" />
+              <span>Artworks</span>
             </motion.button>
             <motion.button
               onClick={() => setActiveTab("certificates")}
@@ -131,14 +165,14 @@ export function Projects() {
                   : "border-transparent text-gray-400 hover:text-primary hover:border-primary/50"
               }`}
             >
-              <Award size={20} />
+              <Award size={20} className="hidden sm:block" />
               <span>Certifications</span>
             </motion.button>
           </div>
 
           {/* Content */}
           {activeTab === "certificates" && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="mt-8 mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
               {certifications.map((cert, idx) => (
                 <motion.div
                   key={idx}
@@ -206,7 +240,35 @@ export function Projects() {
             </div>
           )}
 
-          {/* Projects Tab Placeholder */}
+          {activeTab === "design" && (
+            <div className="mt-8 mb-8 columns-2 gap-1 md:columns-3 md:gap-2">
+              {visualDesigns.map((design, idx) => (
+                <motion.div
+                  key={design.image}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: idx * 0.04 }}
+                  whileHover={{
+                    scale: 1.06,
+                    zIndex: 50,
+                    transition: hoverSpring,
+                  }}
+                  className="group relative z-0 mb-1 block w-full overflow-visible border border-primary/0 bg-gray-900 transition-[box-shadow,border-color] duration-200 hover:border-primary/75 hover:shadow-[0_0_20px_rgba(0,218,243,0.45)] after:pointer-events-none after:absolute after:inset-0 after:shadow-[inset_0_0_28px_rgba(0,0,0,0.75)] after:opacity-0 after:transition-opacity after:duration-200 group-hover:after:opacity-100 md:mb-2"
+                >
+                  <Image
+                    src={design.image}
+                    alt={design.title}
+                    width={1200}
+                    height={1200}
+                    sizes="(min-width: 768px) 33vw, 50vw"
+                    className="block h-auto w-full"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          )}
+
           {activeTab === "projects" && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {projects.map((project, idx) => (
@@ -293,7 +355,10 @@ export function Projects() {
         open={!!selectedImage}
         onOpenChange={() => setSelectedImage(null)}
       >
-        <DialogContent className="w-screen h-screen max-w-none max-h-none p-0 border-none bg-black/50 flex items-center justify-center [&>button]:hidden">
+        <DialogContent
+          overlayClassName="!z-[9999] bg-black/60 backdrop-blur-md"
+          className="!z-[10000] w-screen h-screen max-w-none max-h-none p-0 border-none bg-transparent flex items-center justify-center [&>button]:hidden"
+        >
           <DialogTitle className="sr-only">Image Viewer</DialogTitle>
           <DialogDescription className="sr-only">
             Full screen image display
@@ -305,7 +370,7 @@ export function Projects() {
                 alt="Full view"
                 width={1200}
                 height={800}
-                className="w-auto h-auto max-w-[75vw] max-h-[75vh] object-contain"
+                className="w-auto h-auto max-w-[95vw] max-h-[95vh] object-contain"
               />
               <button
                 onClick={() => setSelectedImage(null)}
